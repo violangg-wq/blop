@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Interior Decor Game — AIP Widgets style</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Interior Decor Game (AIP Widgets-style)</h1>
+    <p class="subtitle">A custom recreation that prefers the AIP Widgets runtime if available,
+      otherwise falls back to a local shim so the demo still works.</p>
+  </header>
+
+  <main>
+    <section class="controls">
+      <div class="palette">
+        <h2>Furniture Palette</h2>
+        <div id="palette" class="items">
+          <div class="item" data-type="sofa">Sofa</div>
+          <div class="item" data-type="chair">Chair</div>
+          <div class="item" data-type="table">Table</div>
+          <div class="item" data-type="lamp">Lamp</div>
+          <div class="item" data-type="plant">Plant</div>
+        </div>
+      </div>
+
+      <div class="options">
+        <h2>Options</h2>
+        <label>Room color: <input id="roomColor" type="color" value="#f6f6f6"></label>
+        <label>Grid: <input id="toggleGrid" type="checkbox" checked></label>
+        <div class="buttons">
+          <button id="resetBtn">Reset</button>
+          <button id="screenshotBtn">Screenshot</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="play-area">
+      <div id="room" class="room" tabindex="0" aria-label="Decor game area">
+        <div class="floor-label">Drag items into the room</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <small>Recreation inspired by https://aipwidgets.click/decor_game/interior_decor_game.html</small>
+  </footer>
+
+  <!-- Prefer official AIP Widgets runtime if available (non-blocking) -->
+  <script src="https://aipwidgets.click/aipwidgets.js" defer></script>
+
+  <!-- Local shim: provides a minimal AIPWidgets API if the real runtime isn't accessible -->
+  <script src="aipwidgets-shim.js" defer></script>
+
+  <!-- App logic that will attempt to use window.AIPWidgets if present -->
+  <script src="app.js" defer></script>
+</body>
+</html>
